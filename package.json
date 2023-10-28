@@ -1,0 +1,22 @@
+{
+  "name": "gsrwebworks",
+  "version": "1.0.0",
+  "description": "my first site",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gopalubt/gsrwebworks.git"
+  },
+  "author": "Gopal Rana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gopalubt/gsrwebworks/issues"
+  },
+  "homepage": "https://github.com/gopalubt/gsrwebworks#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
