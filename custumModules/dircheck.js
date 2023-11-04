@@ -6,6 +6,7 @@ const directoryPath = __dirname;
 // const filenameToCheck = 'myFile.txt';
 
 function isRouteValid(route) {
+  console.log({route})
   const filePath = path.join(directoryPath, route);
   // Implement your route validation logic here
   if (fs.existsSync(filePath)) {

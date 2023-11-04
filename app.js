@@ -17,12 +17,18 @@ app.get('/', (req, res) => {
 app.get('/:page', (req, res) => {
     const { page } = req.params;
     const isOk = custumModules.isRouteValid(page)
+    console.log(page, isOk,"we")
     if (isOk) {
         res.render(path.join(__dirname, "src/views/", `${page}.ejs`));
-    } else {
+    } 
+    else {
         res.render(path.join(__dirname, "src/views/404page.ejs"));
     }
 });
+app.get('/.well-known/pki-validation/954193E89757E9101B749C9E6B0B1E6E.txt', (req, res) => {
+    res.sendFile(path.join(__dirname, "src/ssl/", `954193E89757E9101B749C9E6B0B1E6E.txt`))
+    }
+);
 
 
 
