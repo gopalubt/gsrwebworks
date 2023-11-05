@@ -8,10 +8,13 @@ const port = 5000
 // Set EJS as the template engine
 app.set('view engine', 'ejs');
 
+// Configure Express to serve static files from the "src/assets" directory
+app.use(express.static('src/assets'));
+
 app.get('/', (req, res) => {
     console.log(__dirname);
     // res.sendFile(path.join(__dirname, "src/views/", 'index.ejs'));
-    res.render(path.join(__dirname, "src/views/", 'index'));
+    res.render(path.join(__dirname, "src/views/", 'index'), { templateUri: `${__dirname}/src` });
 });
 // Remove .html extension from other routes
 app.get('/:page', (req, res) => {
