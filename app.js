@@ -1,18 +1,51 @@
 const express = require('express');
+const AWS = require('aws-sdk');
+require('dotenv').config();
+
 const app = express();
 const path = require('path');
 const custumModules = require('./custumModules/dircheck'); // Import your module
 
 const port = 5000
 
+// Configure AWS with environment variables
+AWS.config.update({
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+    region: process.env.AWS_REGION,
+});
+  
+// Create an S3 instance
+const s3 = new AWS.S3();
+
+
+
 // Set EJS as the template engine
 app.set('view engine', 'ejs');
 
-// Configure Express to serve static files from the "src/assets" directory
-app.use(express.static('src/assets'));
 
+// Define a route to list S3 buckets
+app.get('/list-buckets', (req, res) => {
+    // Use the S3 instance to list buckets
+    s3.listBuckets((err, data) => {
+      if (err) {
+        console.error('Error:', err);
+        res.status(500).send('Internal Server Error');
+      } else {
+        res.json(data.Buckets);
+      }
+    });
+});
+  
+
+// Configure Express to serve static files from the "src/assets" directory
+app.use(express.static(path.join(__dirname, 'src/assets')));
+
+// Serve favicon.ico
+app.get('/favicon.ico', (req, res) => {
+    res.sendFile(path.join(__dirname, 'favicon.ico'));
+});
 app.get('/', (req, res) => {
-    console.log(__dirname);
     // res.sendFile(path.join(__dirname, "src/views/", 'index.ejs'));
     res.render(path.join(__dirname, "src/views/", 'index'), { templateUri: `${__dirname}/src` });
 });

@@ -78,7 +78,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: 0.5rem;
 }
-
+h1 {
+  font-size: 2.1rem;
+}
+h1 {
+  font-size: 2.1rem;
+}
 p {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -9509,6 +9514,7 @@ a.text-dark:hover, a.text-dark:focus {
 @media (min-width: 992px) {
   .wrapper .sidebar {
     margin: 0;
+    padding-top: 140px;
   }
   .wrapper .content {
     width: calc(100% - 350px);

@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/gopalubt/gsrwebworks#readme",
   "dependencies": {
+    "aws-sdk": "^2.1502.0",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2"
   }
